@@ -1,7 +1,7 @@
 import Dependencies from '../../services/Dependencies';
 
 export interface HomeScreenViewInterface {
-  updateCounterText(text: string): void;
+  
 }
 
 export default class HomeScreenPresenter {

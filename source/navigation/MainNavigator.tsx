@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -14,9 +15,9 @@ const Stack = createStackNavigator();
 export default class MainNavigator extends React.Component {
   private readonly dependencies = Dependencies.createDefault();
 
-  private createAddLearner = (): React.ReactNode => {
+  private createAddLearner = (props: any): React.ReactNode => {
     let presenter = new SplashScreenPresenter(this.dependencies);
-    return <SplashScreenView presenter={presenter} />;
+    return <SplashScreenView presenter={presenter} {...props} />;
   };
 
   private createHomeScreen = (): React.ReactNode => {
@@ -32,12 +33,9 @@ export default class MainNavigator extends React.Component {
             name={screens.splash}
             options={{
               title: strings.splash.screenTitle,
-              headerStyle: {
-                elevation: 0,
-                shadowOpacity: 0,
-              },
+              headerShown: false,
             }}>
-            {this.createAddLearner}
+            {props => this.createAddLearner(props)}
           </Stack.Screen>
           <Stack.Screen
             name={screens.home}

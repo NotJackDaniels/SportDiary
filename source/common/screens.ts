@@ -1,6 +1,6 @@
 const screens = {
-home: "home",
-splash:"splash"
+    home: "home",
+    splash:"splash"
 }
 
 export default screens

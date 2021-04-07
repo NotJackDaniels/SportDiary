@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {Button, Text} from 'react-native';
 import HomeScreenPresenter, {
@@ -25,9 +26,7 @@ export default class HomeScreenView
 
   }
 
-  updateCounterText(text: string) {
-    this.setState({counterText: text});
-  }
+
 
   render() {
     return (
