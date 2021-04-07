@@ -1,6 +1,7 @@
 const screens = {
     home: "home",
-    splash:"splash"
+    splash:"splash",
+    addExercise: 'addExercise',
 }
 
-export default screens
+export default screens;

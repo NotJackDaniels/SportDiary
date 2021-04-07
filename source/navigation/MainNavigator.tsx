@@ -9,21 +9,35 @@ import HomeScreenPresenter from '../scenes/home/HomeScreenPresenter';
 import SplashScreenPresenter from '../scenes/Splash/SplashScreenPresenter';
 import SplashScreenView from '../scenes/Splash/SplashScreenView';
 import strings from '../resources/strings';
+import { Text, TouchableOpacity } from 'react-native';
+import { View } from 'react-native';
+import AddExercisePresenter from '../scenes/addExercise/AddExercisePresenter';
+import AddExerciseScreen from '../scenes/addExercise/AddExerciseView';
+import { AddButton } from '../components/AddExerciseButton';
 
 const Stack = createStackNavigator();
 
 export default class MainNavigator extends React.Component {
   private readonly dependencies = Dependencies.createDefault();
 
-  private createAddLearner = (props: any): React.ReactNode => {
+  private createSplashScreen = (props: any): React.ReactNode => {
     let presenter = new SplashScreenPresenter(this.dependencies);
     return <SplashScreenView presenter={presenter} {...props} />;
   };
 
-  private createHomeScreen = (): React.ReactNode => {
+  private createHomeScreen = (props: any): React.ReactNode => {
     let presenter = new HomeScreenPresenter(this.dependencies);
-    return <HomeScreenView presenter={presenter} />;
+    return <HomeScreenView presenter={presenter} {...props} />;
   };
+
+  private createAddExerciseScreen = (props: any): React.ReactNode => {
+    let presenter = new AddExercisePresenter(this.dependencies);
+    return <AddExerciseScreen presenter={presenter} {...props} />;
+  };
+
+  private createAddButton = () : React.ReactNode => {
+    return <AddButton onPress={() => (console.warn('clicked'))}/>;
+  }
 
   render() {
     return (
@@ -35,12 +49,20 @@ export default class MainNavigator extends React.Component {
               title: strings.splash.screenTitle,
               headerShown: false,
             }}>
-            {props => this.createAddLearner(props)}
+            {props => this.createSplashScreen(props)}
           </Stack.Screen>
           <Stack.Screen
             name={screens.home}
-            options={{title: strings.home.screenTitle}}>
-            {this.createHomeScreen}
+            options= {{headerTitle: strings.home.screenTitle,
+            }}>
+            {props => this.createHomeScreen(props)}
+          </Stack.Screen>
+          <Stack.Screen
+            name={screens.addExercise}
+            options={{
+              headerShown: false,
+            }}>
+            {props => this.createAddExerciseScreen(props)}
           </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>

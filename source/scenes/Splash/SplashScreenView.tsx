@@ -14,7 +14,7 @@ interface SplashProps {
     navigation: StackNavigationProp<NavigatorParamList, 'Splash'>;
 }
 
-export default class SplashScreenView extends React.Component<SplashProps> {
+export default class SplashScreenView extends React.Component<SplashProps> implements SplashScreenInterface {
     private readonly presenter: SplashScreenPresenter;
     constructor(props: SplashProps)
     {
