@@ -60,7 +60,7 @@ export default class MainNavigator extends React.Component {
           <Stack.Screen
             name={screens.addExercise}
             options={{
-              headerShown: false,
+              headerTitle: strings.addExercise.header,
             }}>
             {props => this.createAddExerciseScreen(props)}
           </Stack.Screen>
