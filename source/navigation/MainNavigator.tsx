@@ -14,6 +14,7 @@ import { View } from 'react-native';
 import AddExercisePresenter from '../scenes/addExercise/AddExercisePresenter';
 import AddExerciseScreen from '../scenes/addExercise/AddExerciseView';
 import { AddButton } from '../components/AddExerciseButton';
+import colors from '../resources/colors';
 
 const Stack = createStackNavigator();
 
@@ -61,6 +62,9 @@ export default class MainNavigator extends React.Component {
             name={screens.addExercise}
             options={{
               headerTitle: strings.addExercise.header,
+              headerStyle: {
+                backgroundColor: colors.Accent,
+              },
             }}>
             {props => this.createAddExerciseScreen(props)}
           </Stack.Screen>

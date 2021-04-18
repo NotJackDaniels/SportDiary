@@ -12,6 +12,10 @@ const strings = {
         exercise: 'Упражнение',
         name: 'Название',
         header: 'Добавить упражнение',
+        description: 'Описание',
+        repeatAmount: 'Количество повторений',
+        numberOfApproaches: 'Количество подходов',
+        createExercise: 'Сохранить'
     },
 }
 
