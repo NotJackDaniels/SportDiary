@@ -1,8 +1,6 @@
-/* eslint-disable prettier/prettier */
-import Dependencies from "../../services/Dependencies";
+import Dependencies from '../../services/Dependencies';
 
-export interface AddExerciseInterface {
-}
+export interface AddExerciseInterface {}
 
 export default class AddExercisePresenter {
   view?: AddExerciseInterface;

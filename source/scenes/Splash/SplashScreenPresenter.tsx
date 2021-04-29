@@ -1,8 +1,6 @@
-/* eslint-disable prettier/prettier */
-import Dependencies from "../../services/Dependencies";
+import Dependencies from '../../services/Dependencies';
 
-export interface SplashScreenInterface {
-}
+export interface SplashScreenInterface {}
 
 export default class SplashScreenPresenter {
   view?: SplashScreenInterface;

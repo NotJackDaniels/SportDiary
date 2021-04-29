@@ -9,8 +9,6 @@ import HomeScreenPresenter from '../scenes/home/HomeScreenPresenter';
 import SplashScreenPresenter from '../scenes/Splash/SplashScreenPresenter';
 import SplashScreenView from '../scenes/Splash/SplashScreenView';
 import strings from '../resources/strings';
-import { Text, TouchableOpacity } from 'react-native';
-import { View } from 'react-native';
 import AddExercisePresenter from '../scenes/addExercise/AddExercisePresenter';
 import AddExerciseScreen from '../scenes/addExercise/AddExerciseView';
 import { AddButton } from '../components/AddExerciseButton';

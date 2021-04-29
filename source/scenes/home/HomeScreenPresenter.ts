@@ -1,15 +1,13 @@
 import Dependencies from '../../services/Dependencies';
 
-export interface HomeScreenViewInterface {
-  
-}
+export interface HomeScreenViewInterface {}
 
 export default class HomeScreenPresenter {
   view?: HomeScreenViewInterface;
 
-  private dependencies: Dependencies
+  private dependencies: Dependencies;
 
   constructor(dependencies: Dependencies) {
-      this.dependencies = dependencies
+    this.dependencies = dependencies;
   }
 }

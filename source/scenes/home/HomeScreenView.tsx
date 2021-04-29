@@ -1,9 +1,8 @@
-import { StackNavigationProp } from '@react-navigation/stack';
-/* eslint-disable prettier/prettier */
+import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {Text} from 'react-native';
-import { AddButton } from '../../components/AddExerciseButton';
-import { NavigatorParamList } from '../../resources/types';
+import {AddButton} from '../../components/AddExerciseButton';
+import {NavigatorParamList} from '../../resources/types';
 import HomeScreenPresenter, {
   HomeScreenViewInterface,
 } from './HomeScreenPresenter';
@@ -13,9 +12,7 @@ interface Props {
   navigation: StackNavigationProp<NavigatorParamList, 'home'>;
 }
 
-interface State {
-
-}
+interface State {}
 
 export default class HomeScreenView
   extends React.Component<Props, State>
@@ -31,13 +28,15 @@ export default class HomeScreenView
   }
 
   navOpt = () => {
-    console.warn('ok!')
+    console.warn('ok!');
     this.props.navigation.setOptions({
       headerRight: () => (
-        <AddButton onPress={() => this.props.navigation.navigate('addExercise')} />
-      )
-    })
-  }
+        <AddButton
+          onPress={() => this.props.navigation.navigate('addExercise')}
+        />
+      ),
+    });
+  };
 
   render() {
     return (
