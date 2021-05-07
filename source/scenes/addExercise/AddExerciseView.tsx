@@ -48,6 +48,18 @@ export default class AddExerciseScreen
     }
     return false;
   };
+
+  SaveExercise() {
+    const exercise = {
+      name: this.state.name,
+      description: this.state.description,
+      repeatAmount: this.state.repeatAmount,
+      numberOfApproaches: this.state.numberOfApproaches,
+    };
+    this.props.presenter.SaveExercise(exercise);
+    this.props.navigation.goBack();
+  }
+
   render() {
     return (
       <ScrollView
@@ -94,7 +106,7 @@ export default class AddExerciseScreen
             hasErrors={this.hasErrors}
           />
           <FilledButton
-            onPress={() => console.log('clicked!')}
+            onPress={this.SaveExercise}
             buttonText={strings.addExercise.createExercise}
             Style={styles.filledButton}
           />
