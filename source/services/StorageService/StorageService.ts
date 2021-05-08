@@ -3,11 +3,12 @@ import StorageServiceInterface from './StorageServiceInterface';
 
 export default class StorageService implements StorageServiceInterface {
   SaveInStorage = async (exercise: any) => {
+    console.warn(1);
     let exercises = await AsyncStorage.getItem('Exercises');
     if (exercises) {
-      AsyncStorage.setItem('Exercises', exercises?.concat(exercise));
+      await AsyncStorage.mergeItem('Exercises', JSON.stringify(exercise));
     } else {
-      AsyncStorage.setItem('Exercises', exercise);
+      await AsyncStorage.setItem('Exercises', JSON.stringify(exercise));
     }
   };
 }

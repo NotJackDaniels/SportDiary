@@ -12,6 +12,7 @@ export default class AddExercisePresenter {
   }
 
   SaveExercise = (exercise: any) => {
+    console.warn(exercise);
     this.dependencies.storageService.SaveInStorage(exercise);
   };
 }

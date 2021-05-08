@@ -48,8 +48,20 @@ export default class AddExerciseScreen
     }
     return false;
   };
+  setName = (name: string) => {
+    this.setState({name: name});
+  };
+  setDescription = (description: string) => {
+    this.setState({description: description});
+  };
+  setAmountOfApproaches = (numberOfApproaches: string) => {
+    this.setState({numberOfApproaches: numberOfApproaches});
+  };
+  setRepeatAmount = (repeatAmount: string) => {
+    this.setState({repeatAmount: repeatAmount});
+  };
 
-  SaveExercise() {
+  SaveExercise = () => {
     const exercise = {
       name: this.state.name,
       description: this.state.description,
@@ -58,7 +70,7 @@ export default class AddExerciseScreen
     };
     this.props.presenter.SaveExercise(exercise);
     this.props.navigation.goBack();
-  }
+  };
 
   render() {
     return (
@@ -72,7 +84,7 @@ export default class AddExerciseScreen
           <Input
             placeholder={strings.addExercise.name}
             value={this.state.name}
-            onChangeHandle={(value: string) => this.setState({name: value})}
+            onChangeHandle={(value: string) => this.setName(value)}
             errorType={'no'}
             hasErrors={this.hasErrors}
           />
@@ -81,9 +93,7 @@ export default class AddExerciseScreen
             enableMultiline={true}
             numberOfLines={2}
             value={this.state.description}
-            onChangeHandle={(value: string) =>
-              this.setState({description: value})
-            }
+            onChangeHandle={(value: string) => this.setDescription(value)}
             errorType={'no'}
             hasErrors={this.hasErrors}
           />
@@ -91,19 +101,19 @@ export default class AddExerciseScreen
             placeholder={strings.addExercise.numberOfApproaches}
             value={this.state.numberOfApproaches}
             onChangeHandle={(value: string) =>
-              this.setState({numberOfApproaches: value})
+              this.setAmountOfApproaches(value)
             }
             errorType={'no'}
             hasErrors={this.hasErrors}
+            keyboardType={'numeric'}
           />
           <Input
             placeholder={strings.addExercise.repeatAmount}
             value={this.state.repeatAmount}
-            onChangeHandle={(value: string) =>
-              this.setState({repeatAmount: value})
-            }
+            onChangeHandle={(value: string) => this.setRepeatAmount(value)}
             errorType={'no'}
             hasErrors={this.hasErrors}
+            keyboardType={'numeric'}
           />
           <FilledButton
             onPress={this.SaveExercise}
