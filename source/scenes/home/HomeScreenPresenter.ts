@@ -14,6 +14,10 @@ export default class HomeScreenPresenter {
     this.dependencies = dependencies;
   }
 
+  async deleteExercise(item: any) {
+    await this.dependencies.storageService.DeleteExercise(item);
+  }
+
   async getExercises() {
     let exercises = await this.dependencies.storageService.GetExercises();
     if (exercises) {
