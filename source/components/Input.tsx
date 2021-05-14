@@ -16,6 +16,7 @@ interface Props {
   marginBottom?: number;
   errorType: string;
   hasErrors: (errorType: string) => boolean;
+  keyboardType?: string;
 }
 
 interface State {
@@ -30,10 +31,18 @@ export class Input extends React.Component<Props, State> {
     };
   }
 
+  keyboardType = () => {
+    if (this.props.keyboardType && this.props.keyboardType === 'numeric') {
+      return 'number-pad';
+    }
+    return 'default';
+  };
+
   render() {
     return (
       <>
         <PaperTextInput
+          keyboardType={this.keyboardType()}
           error={this.props.hasErrors(this.props.errorType)}
           value={this.props.value}
           mode="outlined"

@@ -10,4 +10,9 @@ export default class AddExercisePresenter {
   constructor(dependencies: Dependencies) {
     this.dependencies = dependencies;
   }
+
+  SaveExercise = (exercise: any) => {
+    console.warn(exercise);
+    this.dependencies.storageService.SaveInStorage(exercise);
+  };
 }
