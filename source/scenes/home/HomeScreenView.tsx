@@ -8,6 +8,7 @@ import {NavigatorParamList} from '../../resources/types';
 import HomeScreenPresenter, {
   HomeScreenViewInterface,
 } from './HomeScreenPresenter';
+import Swipeout from 'react-native-swipeout';
 
 interface Props {
   presenter: HomeScreenPresenter;
@@ -59,7 +60,22 @@ export default class HomeScreenView
   };
 
   renderItem({item}: {item: IExercise}) {
-    return <Exercise name={item.name} description={item.description} />;
+    let swipeBtns = [
+      {
+        text: 'Delete',
+        backgroundColor: 'red',
+        underlayColor: 'rgba(0, 0, 0, 1, 0.6)',
+        onPress: () => this.presenter.deleteExercise(item),
+      },
+    ];
+    return (
+      <Swipeout
+        right={swipeBtns}
+        autoClose={true}
+        backgroundColor="transparent">
+        <Exercise name={item.name} description={item.description} />
+      </Swipeout>
+    );
   }
 
   render() {
