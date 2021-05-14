@@ -1,7 +1,8 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
-import {Text} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {AddButton} from '../../components/AddExerciseButton';
+import {Exercise} from '../../components/Exercise';
 import {NavigatorParamList} from '../../resources/types';
 import HomeScreenPresenter, {
   HomeScreenViewInterface,
@@ -41,8 +42,16 @@ export default class HomeScreenView
   render() {
     return (
       <>
-        <Text>home</Text>
+        <View style={styles.container}>
+          <Exercise name={'name!!'} description={'description'} />
+        </View>
       </>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 8,
+  },
+});
