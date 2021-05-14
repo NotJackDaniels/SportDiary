@@ -6,6 +6,7 @@ const strings = {
     },
     home: {
         screenTitle: 'Home',
+        tasksError: 'Задачи не найдены',
     },
     addExercise:{
         error: 'Неверное значение!',
