@@ -6,6 +6,7 @@ const strings = {
     },
     home: {
         screenTitle: 'Home',
+        tasksError: 'Задачи не найдены',
     },
     addExercise:{
         error: 'Неверное значение!',
@@ -15,8 +16,12 @@ const strings = {
         description: 'Описание',
         repeatAmount: 'Количество повторений',
         numberOfApproaches: 'Количество подходов',
-        createExercise: 'Сохранить'
+        createExercise: 'Сохранить',
     },
+    readExercise: {
+        header: 'Упражнение',
+        edit: 'Редактировать',
+    }
 }
 
 export default strings;

@@ -3,12 +3,32 @@ import StorageServiceInterface from './StorageServiceInterface';
 
 export default class StorageService implements StorageServiceInterface {
   SaveInStorage = async (exercise: any) => {
-    console.warn(1);
-    let exercises = await AsyncStorage.getItem('Exercises');
+    AsyncStorage.clear();
+    let exercises: any = await AsyncStorage.getItem('Exercises');
     if (exercises) {
-      await AsyncStorage.mergeItem('Exercises', JSON.stringify(exercise));
+      exercises = JSON.parse(exercises);
+      exercises.push(exercise);
+      await AsyncStorage.setItem('Exercises', JSON.stringify(exercises));
     } else {
-      await AsyncStorage.setItem('Exercises', JSON.stringify(exercise));
+      exercises = [];
+      exercises.push(exercise);
+      console.warn('added!');
+      await AsyncStorage.setItem('Exercises', JSON.stringify(exercises));
+    }
+  };
+  GetExercises = async () => {
+    return await AsyncStorage.getItem('Exercises');
+  };
+
+  DeleteExercise = async (item: any) => {
+    let exercises: any = await AsyncStorage.getItem('Exercises');
+    if (exercises) {
+      exercises = JSON.parse(exercises);
+      let alteredTasks = exercises.filter(function (e: any) {
+        return e.id !== item.id;
+      });
+      AsyncStorage.removeItem('Exercises');
+      AsyncStorage.setItem('Exercises', JSON.stringify(alteredTasks));
     }
   };
 }
