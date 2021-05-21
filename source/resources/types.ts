@@ -1,5 +1,8 @@
 export type NavigatorParamList = {
-    Splash: undefined,
-    home: undefined,
-    addExercise: undefined,
-}
+  Splash: undefined;
+  home: undefined;
+  addExercise: undefined;
+  readExercise: {
+    item: any;
+  };
+};
