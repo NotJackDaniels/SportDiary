@@ -1,3 +1,5 @@
+import {StackNavigationProp} from '@react-navigation/stack';
+import {NavigatorParamList} from '../../resources/types';
 import Dependencies from '../../services/Dependencies';
 
 export interface EditExerciseInterface {}
@@ -11,7 +13,12 @@ export default class EditExercisePresenter {
     this.dependencies = dependencies;
   }
 
-  EditExercise = (exercise: any) => {
-    console.warn(exercise);
+  EditExercise = (
+    exercise: any,
+    navigation: StackNavigationProp<NavigatorParamList, 'editExercise'>,
+  ) => {
+    console.warn(1);
+    this.dependencies.storageService.EditExercise(exercise);
+    navigation.navigate('home');
   };
 }

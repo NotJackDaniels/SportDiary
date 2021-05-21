@@ -31,10 +31,10 @@ export default class EditExerciseView
     super(props);
     this.presenter = this.props.presenter;
     this.state = {
-      name: '',
-      repeatAmount: '',
-      description: '',
-      numberOfApproaches: '',
+      name: this.props.route.params.item.name,
+      repeatAmount: this.props.route.params.item.repeatAmount,
+      description: this.props.route.params.item.description,
+      numberOfApproaches: this.props.route.params.item.numberOfApproaches,
     };
   }
   hasErrors = (errorType: string) => {
@@ -70,8 +70,7 @@ export default class EditExerciseView
       repeatAmount: this.state.repeatAmount,
       numberOfApproaches: this.state.numberOfApproaches,
     };
-    this.props.presenter.EditExercise(exercise);
-    this.props.navigation.goBack();
+    this.props.presenter.EditExercise(exercise, this.props.navigation);
   };
 
   render() {
