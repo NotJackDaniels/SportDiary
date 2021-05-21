@@ -5,4 +5,7 @@ export type NavigatorParamList = {
   readExercise: {
     item: any;
   };
+  editExercise: {
+    item: any;
+  };
 };

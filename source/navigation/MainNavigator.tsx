@@ -15,6 +15,8 @@ import { AddButton } from '../components/AddExerciseButton';
 import colors from '../resources/colors';
 import ReadExerciseViewPresenter from '../scenes/readExercise/ReadExerciseViewPresenter';
 import ReadExerciseView from '../scenes/readExercise/ReadExerciseView';
+import EditExercisePresenter from '../scenes/editExercise/EditExercisePresenter';
+import EditExerciseView from '../scenes/editExercise/editExerciseView';
 
 const Stack = createStackNavigator();
 
@@ -41,9 +43,15 @@ export default class MainNavigator extends React.Component {
     return <ReadExerciseView presenter={presenter} {...props} />;
   };
 
+  private createEditExerciseScreen = (props: any): React.ReactNode => {
+    let presenter = new EditExercisePresenter(this.dependencies);
+    return <EditExerciseView presenter={presenter} {...props} />;
+  };
+
   private createAddButton = () : React.ReactNode => {
     return <AddButton onPress={() => (console.warn('clicked'))}/>;
   }
+  
 
   render() {
     return (
@@ -82,6 +90,16 @@ export default class MainNavigator extends React.Component {
               },
             }}>
             {props => this.createReadExerciseScreen(props)}
+          </Stack.Screen>
+          <Stack.Screen
+            name={screens.editExercise}
+            options={{
+              headerTitle: strings.editExercise.header,
+              headerStyle: {
+                backgroundColor: colors.Accent,
+              },
+            }}>
+            {props => this.createEditExerciseScreen(props)}
           </Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
