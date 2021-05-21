@@ -21,6 +21,9 @@ const strings = {
     readExercise: {
         header: 'Упражнение',
         edit: 'Редактировать',
+    },
+    editExercise: {
+        header: 'Редактировать упражнение',
     }
 }
 
