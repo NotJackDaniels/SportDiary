@@ -10,4 +10,6 @@ export default class ReadExerciseViewPresenter {
   constructor(dependencies: Dependencies) {
     this.dependencies = dependencies;
   }
+
+  EditExercise = () => {};
 }

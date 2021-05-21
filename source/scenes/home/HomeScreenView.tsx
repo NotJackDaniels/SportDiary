@@ -1,6 +1,6 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
-import {FlatList, Text} from 'react-native';
+import {FlatList, Text, TouchableOpacity} from 'react-native';
 import {StyleSheet, View} from 'react-native';
 import {AddButton} from '../../components/AddExerciseButton';
 import {Exercise} from '../../components/Exercise';
@@ -21,7 +21,9 @@ interface State {
 
 interface IExercise {
   name: string;
+  repeatAmount: string;
   description: string;
+  numberOfApproaches: string;
 }
 
 export default class HomeScreenView
@@ -73,7 +75,15 @@ export default class HomeScreenView
         right={swipeBtns}
         autoClose={true}
         backgroundColor="transparent">
-        <Exercise name={item.name} description={item.description} />
+        <TouchableOpacity
+          onPress={() =>
+            this.presenter.didPressReadExerciseButton(
+              item,
+              this.props.navigation,
+            )
+          }>
+          <Exercise name={item.name} description={item.description} />
+        </TouchableOpacity>
       </Swipeout>
     );
   }
