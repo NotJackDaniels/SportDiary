@@ -57,7 +57,9 @@ export default class ReadExerciseView
           <Text>{item.repeatAmount}</Text>
         </View>
         <FilledButton
-          onPress={this.presenter.EditExercise}
+          onPress={() =>
+            this.presenter.EditExercise(item, this.props.navigation)
+          }
           buttonText={strings.readExercise.edit}
           Style={styles.filledButton}
         />

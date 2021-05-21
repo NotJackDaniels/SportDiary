@@ -1,3 +1,4 @@
+import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
 import {StyleSheet, ScrollView, View, Text} from 'react-native';
@@ -11,7 +12,8 @@ import EditExercisePresenter, {
 
 interface Props {
   presenter: EditExercisePresenter;
-  navigation: StackNavigationProp<NavigatorParamList, 'addExercise'>;
+  navigation: StackNavigationProp<NavigatorParamList, 'editExercise'>;
+  route: RouteProp<NavigatorParamList, 'editExercise'>;
 }
 
 interface State {
@@ -21,7 +23,7 @@ interface State {
   numberOfApproaches: string;
 }
 
-export default class AddExerciseScreen
+export default class EditExerciseView
   extends React.Component<Props, State>
   implements EditExerciseInterface {
   private readonly presenter: EditExercisePresenter;
