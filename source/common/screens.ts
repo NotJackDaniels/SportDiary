@@ -4,6 +4,7 @@ const screens = {
   addExercise: 'addExercise',
   readExercise: 'readExercise',
   editExercise: 'editExercise',
+  login: 'login',
 };
 
 export default screens;

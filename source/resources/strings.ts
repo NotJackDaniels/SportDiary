@@ -24,6 +24,12 @@ const strings = {
     },
     editExercise: {
         header: 'Редактировать упражнение',
+    },
+    phoneAuthorization: {
+        header: 'Авторизация',
+        logo: 'SportDiary',
+        phonePlaceholder: 'Номер телефона',
+        login: 'Войти',
     }
 }
 
