@@ -1,8 +1,17 @@
+import {StackNavigationProp} from '@react-navigation/stack';
 import strings from '../../resources/strings';
+import {NavigatorParamList} from '../../resources/types';
 import Dependencies from '../../services/Dependencies';
 
 export interface HomeScreenViewInterface {
   setExercises(exercises: any): void;
+}
+
+interface Exercise {
+  name: string;
+  repeatAmount: string;
+  description: string;
+  numberOfApproaches: string;
 }
 
 export default class HomeScreenPresenter {
@@ -12,6 +21,13 @@ export default class HomeScreenPresenter {
 
   constructor(dependencies: Dependencies) {
     this.dependencies = dependencies;
+  }
+
+  didPressReadExerciseButton(
+    item: Exercise,
+    navigation: StackNavigationProp<NavigatorParamList, 'home'>,
+  ) {
+    navigation.navigate('readExercise', {item: item});
   }
 
   async deleteExercise(item: any) {

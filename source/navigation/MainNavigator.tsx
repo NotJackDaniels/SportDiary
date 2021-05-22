@@ -13,6 +13,15 @@ import AddExercisePresenter from '../scenes/addExercise/AddExercisePresenter';
 import AddExerciseScreen from '../scenes/addExercise/AddExerciseView';
 import { AddButton } from '../components/AddExerciseButton';
 import colors from '../resources/colors';
+import ReadExerciseViewPresenter from '../scenes/readExercise/ReadExerciseViewPresenter';
+import ReadExerciseView from '../scenes/readExercise/ReadExerciseView';
+import EditExercisePresenter from '../scenes/editExercise/EditExercisePresenter';
+import EditExerciseView from '../scenes/editExercise/editExerciseView';
+import PhoneScreenPresenter from '../scenes/authorization/PhoneScreenPresenter';
+import PhoneScreenView from '../scenes/authorization/PhoneScreenView';
+import CodePresenter from '../scenes/authorization/CodePresenter';
+import CodeView from '../scenes/authorization/CodeView';
+import FlashMessage from 'react-native-flash-message';
 
 const Stack = createStackNavigator();
 
@@ -34,9 +43,30 @@ export default class MainNavigator extends React.Component {
     return <AddExerciseScreen presenter={presenter} {...props} />;
   };
 
+  private createReadExerciseScreen = (props: any): React.ReactNode => {
+    let presenter = new ReadExerciseViewPresenter(this.dependencies);
+    return <ReadExerciseView presenter={presenter} {...props} />;
+  };
+
+  private createEditExerciseScreen = (props: any): React.ReactNode => {
+    let presenter = new EditExercisePresenter(this.dependencies);
+    return <EditExerciseView presenter={presenter} {...props} />;
+  };
+
+  private createLoginScreen = (props: any): React.ReactNode => {
+    let presenter = new PhoneScreenPresenter(this.dependencies);
+    return <PhoneScreenView presenter={presenter} {...props} />;
+  };
+
+  private createCodeScreen = (props: any): React.ReactNode => {
+    let presenter = new CodePresenter(this.dependencies);
+    return <CodeView presenter={presenter} {...props} />;
+  };
+
   private createAddButton = () : React.ReactNode => {
     return <AddButton onPress={() => (console.warn('clicked'))}/>;
   }
+  
 
   render() {
     return (
@@ -49,6 +79,22 @@ export default class MainNavigator extends React.Component {
               headerShown: false,
             }}>
             {props => this.createSplashScreen(props)}
+          </Stack.Screen>
+          <Stack.Screen
+            name={screens.login}
+            options={{
+              title: strings.phoneAuthorization.header,
+              headerShown: false,
+            }}>
+            {props => this.createLoginScreen(props)}
+          </Stack.Screen>
+          <Stack.Screen
+            name={screens.code}
+            options={{
+              title: strings.phoneAuthorization.headerCode,
+              headerShown: false,
+            }}>
+            {props => this.createCodeScreen(props)}
           </Stack.Screen>
           <Stack.Screen
             name={screens.home}
@@ -66,7 +112,28 @@ export default class MainNavigator extends React.Component {
             }}>
             {props => this.createAddExerciseScreen(props)}
           </Stack.Screen>
+          <Stack.Screen
+            name={screens.readExercise}
+            options={{
+              headerTitle: strings.readExercise.header,
+              headerStyle: {
+                backgroundColor: colors.Accent,
+              },
+            }}>
+            {props => this.createReadExerciseScreen(props)}
+          </Stack.Screen>
+          <Stack.Screen
+            name={screens.editExercise}
+            options={{
+              headerTitle: strings.editExercise.header,
+              headerStyle: {
+                backgroundColor: colors.Accent,
+              },
+            }}>
+            {props => this.createEditExerciseScreen(props)}
+          </Stack.Screen>
         </Stack.Navigator>
+        <FlashMessage />
       </NavigationContainer>
     );
   }

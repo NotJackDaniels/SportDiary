@@ -1,6 +1,6 @@
 import {StackNavigationProp} from '@react-navigation/stack';
 import React from 'react';
-import {FlatList, Text} from 'react-native';
+import {FlatList, RefreshControl, Text, TouchableOpacity} from 'react-native';
 import {StyleSheet, View} from 'react-native';
 import {AddButton} from '../../components/AddExerciseButton';
 import {Exercise} from '../../components/Exercise';
@@ -17,11 +17,14 @@ interface Props {
 
 interface State {
   exercises: any;
+  refreshing: boolean;
 }
 
 interface IExercise {
   name: string;
+  repeatAmount: string;
   description: string;
+  numberOfApproaches: string;
 }
 
 export default class HomeScreenView
@@ -37,6 +40,7 @@ export default class HomeScreenView
     this.navOpt();
     this.state = {
       exercises: '',
+      refreshing: false,
     };
   }
 
@@ -73,10 +77,24 @@ export default class HomeScreenView
         right={swipeBtns}
         autoClose={true}
         backgroundColor="transparent">
-        <Exercise name={item.name} description={item.description} />
+        <TouchableOpacity
+          onPress={() =>
+            this.presenter.didPressReadExerciseButton(
+              item,
+              this.props.navigation,
+            )
+          }>
+          <Exercise name={item.name} description={item.description} />
+        </TouchableOpacity>
       </Swipeout>
     );
   }
+
+  _onRefresh = async () => {
+    this.setState({refreshing: true});
+    await this.presenter.getExercises();
+    this.setState({refreshing: false});
+  };
 
   render() {
     return (
@@ -87,6 +105,12 @@ export default class HomeScreenView
               data={this.state.exercises}
               renderItem={item => this.renderItem(item)}
               keyExtractor={(item, index) => `item-${index}`}
+              refreshControl={
+                <RefreshControl
+                  onRefresh={this._onRefresh}
+                  refreshing={this.state.refreshing}
+                />
+              }
             />
           ) : (
             <Text>{this.state.exercises.length}</Text>

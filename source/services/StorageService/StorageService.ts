@@ -31,4 +31,17 @@ export default class StorageService implements StorageServiceInterface {
       AsyncStorage.setItem('Exercises', JSON.stringify(alteredTasks));
     }
   };
+
+  EditExercise = async (item: any) => {
+    let exercises: any = await AsyncStorage.getItem('Exercises');
+    if (exercises) {
+      exercises = JSON.parse(exercises);
+      let alteredTasks = exercises.filter(function (e: any) {
+        return e.id !== item.id;
+      });
+      AsyncStorage.removeItem('Exercises');
+      alteredTasks.push(item);
+      AsyncStorage.setItem('Exercises', JSON.stringify(alteredTasks));
+    }
+  };
 }
