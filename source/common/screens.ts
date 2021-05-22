@@ -5,6 +5,7 @@ const screens = {
   readExercise: 'readExercise',
   editExercise: 'editExercise',
   login: 'login',
+  code: 'code',
 };
 
 export default screens;

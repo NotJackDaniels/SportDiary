@@ -1,3 +1,5 @@
+import {FirebaseAuthTypes} from '@react-native-firebase/auth';
+
 export type NavigatorParamList = {
   Splash: undefined;
   home: undefined;
@@ -9,4 +11,8 @@ export type NavigatorParamList = {
     item: any;
   };
   login: undefined;
+  code: {
+    confirmation: Promise<FirebaseAuthTypes.ConfirmationResult>;
+    phone: string;
+  };
 };
