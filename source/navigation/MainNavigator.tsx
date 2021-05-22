@@ -21,6 +21,7 @@ import PhoneScreenPresenter from '../scenes/authorization/PhoneScreenPresenter';
 import PhoneScreenView from '../scenes/authorization/PhoneScreenView';
 import CodePresenter from '../scenes/authorization/CodePresenter';
 import CodeView from '../scenes/authorization/CodeView';
+import FlashMessage from 'react-native-flash-message';
 
 const Stack = createStackNavigator();
 
@@ -132,6 +133,7 @@ export default class MainNavigator extends React.Component {
             {props => this.createEditExerciseScreen(props)}
           </Stack.Screen>
         </Stack.Navigator>
+        <FlashMessage />
       </NavigationContainer>
     );
   }

@@ -10,6 +10,7 @@ import {FilledButton} from '../../components/FilledButton';
 import {NavigatorParamList} from '../../resources/types';
 import {StackNavigationProp} from '@react-navigation/stack';
 import PhoneAuthorizationImg from '../../resources/images/gym.svg';
+import {showMessage} from 'react-native-flash-message';
 
 interface Props {
   presenter: PhoneScreenPresenter;
@@ -37,6 +38,16 @@ export default class PhoneScreenView
 
   setPhone = (phone: string) => {
     this.setState({phone: phone});
+  };
+
+  ShowMessage = (message: string, color: string, bgColor: string) => {
+    this.setState({message: message});
+    console.warn(message);
+    showMessage({
+      message: this.state.message.toString(),
+      color: color,
+      backgroundColor: bgColor,
+    });
   };
 
   render() {
