@@ -3,7 +3,6 @@ import StorageServiceInterface from './StorageServiceInterface';
 
 export default class StorageService implements StorageServiceInterface {
   SaveInStorage = async (exercise: any) => {
-    AsyncStorage.clear();
     let exercises: any = await AsyncStorage.getItem('Exercises');
     if (exercises) {
       exercises = JSON.parse(exercises);
