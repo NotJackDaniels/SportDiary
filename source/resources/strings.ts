@@ -30,6 +30,9 @@ const strings = {
         logo: 'SportDiary',
         phonePlaceholder: 'Номер телефона',
         login: 'Войти',
+        code: 'Введите код из СМС',
+        codePlaceholder: 'Код',
+        sendCodeAgain: 'Отправить еще раз',
     }
 }
 
