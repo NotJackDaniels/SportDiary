@@ -1,8 +1,11 @@
 import {StackNavigationProp} from '@react-navigation/stack';
+import colors from '../../resources/colors';
 import {NavigatorParamList} from '../../resources/types';
 import Dependencies from '../../services/Dependencies';
 
-export interface PhoneScreenViewInterface {}
+export interface PhoneScreenViewInterface {
+  ShowMessage: (message: any, color: string, bgColor: string) => void;
+}
 
 export default class PhoneScreenPresenter {
   view?: PhoneScreenViewInterface;
@@ -26,6 +29,6 @@ export default class PhoneScreenPresenter {
   }
 
   private setError = (error: string) => {
-    console.warn(error);
+    this.view?.ShowMessage(error, colors.Base1, colors.Error);
   };
 }

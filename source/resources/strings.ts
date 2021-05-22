@@ -34,7 +34,11 @@ const strings = {
         code: 'Введите код из СМС',
         codePlaceholder: 'Код',
         sendCodeAgain: 'Отправить еще раз',
-    }
+    },
+    flashMessages: {
+        sendCodeAgain: 'СМС с кодом было отправлено на ваш номер',
+        wrongCode: 'Неверный код подтверждения',
+    },
 }
 
 export default strings;

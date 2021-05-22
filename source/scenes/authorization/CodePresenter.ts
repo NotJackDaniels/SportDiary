@@ -3,6 +3,7 @@ import {FirebaseAuthTypes} from '@react-native-firebase/auth';
 import colors from '../../resources/colors';
 import {NavigatorParamList} from '../../resources/types';
 import {StackNavigationProp} from '@react-navigation/stack';
+import strings from '../../resources/strings';
 
 export interface CodeViewInterface {
   setCode: (code: string) => void;
@@ -33,12 +34,21 @@ export default class CodePresenter {
     );
     console.warn(this.confirmation);
     if (this.confirmation) {
-      console.warn('ok');
+      this.view?.ShowMessage(
+        strings.flashMessages.sendCodeAgain,
+        colors.Base1,
+        colors.Accent,
+      );
     }
   }
 
   private setError = (error: any) => {
     console.warn(error);
+    this.view?.ShowMessage(
+      strings.flashMessages.wrongCode,
+      colors.Base1,
+      colors.Error,
+    );
   };
 
   setCode = (

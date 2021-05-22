@@ -8,6 +8,7 @@ import strings from '../../resources/strings';
 import {CodeInput} from '../../components/CodeInput';
 import {FilledButton} from '../../components/FilledButton';
 import {RouteProp} from '@react-navigation/native';
+import {showMessage} from 'react-native-flash-message';
 
 interface Props {
   presenter: CodePresenter;
@@ -40,9 +41,14 @@ export default class CodeView
     this.presenter.didMount(this.props.route.params?.confirmation);
   }
 
-  ShowMessage = (message: string) => {
+  ShowMessage = (message: string, color: string, bgColor: string) => {
     this.setState({message: message});
     console.warn(message);
+    showMessage({
+      message: this.state.message.toString(),
+      color: color,
+      backgroundColor: bgColor,
+    });
   };
 
   setCode = (code: string) => {
