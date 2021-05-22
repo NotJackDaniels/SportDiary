@@ -24,7 +24,21 @@ const strings = {
     },
     editExercise: {
         header: 'Редактировать упражнение',
-    }
+    },
+    phoneAuthorization: {
+        header: 'Авторизация',
+        headerCode: 'Подтверждение кода',
+        logo: 'SportDiary',
+        phonePlaceholder: 'Номер телефона',
+        login: 'Войти',
+        code: 'Введите код из СМС',
+        codePlaceholder: 'Код',
+        sendCodeAgain: 'Отправить еще раз',
+    },
+    flashMessages: {
+        sendCodeAgain: 'СМС с кодом было отправлено на ваш номер',
+        wrongCode: 'Неверный код подтверждения',
+    },
 }
 
 export default strings;

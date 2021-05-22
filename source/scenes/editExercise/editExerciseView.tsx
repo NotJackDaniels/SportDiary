@@ -9,7 +9,6 @@ import {NavigatorParamList} from '../../resources/types';
 import EditExercisePresenter, {
   EditExerciseInterface,
 } from './EditExercisePresenter';
-
 interface Props {
   presenter: EditExercisePresenter;
   navigation: StackNavigationProp<NavigatorParamList, 'editExercise'>;
@@ -142,5 +141,8 @@ const styles = StyleSheet.create({
   },
   filledButton: {
     width: '100%',
+  },
+  image: {
+    alignSelf: 'center',
   },
 });
