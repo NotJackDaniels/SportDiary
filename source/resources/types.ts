@@ -8,4 +8,5 @@ export type NavigatorParamList = {
   editExercise: {
     item: any;
   };
+  login: undefined;
 };
