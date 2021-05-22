@@ -17,6 +17,8 @@ import ReadExerciseViewPresenter from '../scenes/readExercise/ReadExerciseViewPr
 import ReadExerciseView from '../scenes/readExercise/ReadExerciseView';
 import EditExercisePresenter from '../scenes/editExercise/EditExercisePresenter';
 import EditExerciseView from '../scenes/editExercise/editExerciseView';
+import PhoneScreenPresenter from '../scenes/authorization/PhoneScreenPresenter';
+import PhoneScreenView from '../scenes/authorization/PhoneScreenView';
 
 const Stack = createStackNavigator();
 
@@ -48,6 +50,11 @@ export default class MainNavigator extends React.Component {
     return <EditExerciseView presenter={presenter} {...props} />;
   };
 
+  private LoginScreen = (props: any): React.ReactNode => {
+    let presenter = new PhoneScreenPresenter(this.dependencies);
+    return <PhoneScreenView presenter={presenter} {...props} />;
+  };
+
   private createAddButton = () : React.ReactNode => {
     return <AddButton onPress={() => (console.warn('clicked'))}/>;
   }
@@ -64,6 +71,14 @@ export default class MainNavigator extends React.Component {
               headerShown: false,
             }}>
             {props => this.createSplashScreen(props)}
+          </Stack.Screen>
+          <Stack.Screen
+            name={screens.login}
+            options={{
+              title: strings.phoneAuthorization.header,
+              headerShown: false,
+            }}>
+            {props => this.LoginScreen(props)}
           </Stack.Screen>
           <Stack.Screen
             name={screens.home}
