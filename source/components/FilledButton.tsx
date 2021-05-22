@@ -8,6 +8,7 @@ interface Props {
   onPress: () => void;
   buttonText: string;
   Style?: any;
+  textColor?: string;
 }
 
 export class FilledButton extends React.Component<Props> {
@@ -16,7 +17,7 @@ export class FilledButton extends React.Component<Props> {
       <Ripple
         onPress={() => this.props.onPress()}
         style={[styles.button, this.props.Style]}>
-        <Text style={[styles.text]}>
+        <Text style={[styles.text, {color: this.props.textColor}]}>
           {this.props.buttonText}
         </Text>
       </Ripple>

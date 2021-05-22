@@ -19,6 +19,8 @@ import EditExercisePresenter from '../scenes/editExercise/EditExercisePresenter'
 import EditExerciseView from '../scenes/editExercise/editExerciseView';
 import PhoneScreenPresenter from '../scenes/authorization/PhoneScreenPresenter';
 import PhoneScreenView from '../scenes/authorization/PhoneScreenView';
+import CodePresenter from '../scenes/authorization/CodePresenter';
+import CodeView from '../scenes/authorization/CodeView';
 
 const Stack = createStackNavigator();
 
@@ -50,9 +52,14 @@ export default class MainNavigator extends React.Component {
     return <EditExerciseView presenter={presenter} {...props} />;
   };
 
-  private LoginScreen = (props: any): React.ReactNode => {
+  private createLoginScreen = (props: any): React.ReactNode => {
     let presenter = new PhoneScreenPresenter(this.dependencies);
     return <PhoneScreenView presenter={presenter} {...props} />;
+  };
+
+  private createCodeScreen = (props: any): React.ReactNode => {
+    let presenter = new CodePresenter(this.dependencies);
+    return <CodeView presenter={presenter} {...props} />;
   };
 
   private createAddButton = () : React.ReactNode => {
@@ -78,7 +85,15 @@ export default class MainNavigator extends React.Component {
               title: strings.phoneAuthorization.header,
               headerShown: false,
             }}>
-            {props => this.LoginScreen(props)}
+            {props => this.createLoginScreen(props)}
+          </Stack.Screen>
+          <Stack.Screen
+            name={screens.code}
+            options={{
+              title: strings.phoneAuthorization.headerCode,
+              headerShown: false,
+            }}>
+            {props => this.createCodeScreen(props)}
           </Stack.Screen>
           <Stack.Screen
             name={screens.home}

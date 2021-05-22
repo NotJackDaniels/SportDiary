@@ -21,7 +21,7 @@ export default class PhoneScreenPresenter {
       this.setError,
     );
     if (confirmation) {
-      navigation.navigate('home');
+      navigation.navigate('code', {confirmation: confirmation, phone: phone});
     }
   }
 

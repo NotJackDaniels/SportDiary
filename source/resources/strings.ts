@@ -27,6 +27,7 @@ const strings = {
     },
     phoneAuthorization: {
         header: 'Авторизация',
+        headerCode: 'Подтверждение кода',
         logo: 'SportDiary',
         phonePlaceholder: 'Номер телефона',
         login: 'Войти',

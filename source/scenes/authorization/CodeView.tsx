@@ -37,8 +37,13 @@ export default class CodeView
   }
 
   componentDidMount() {
-    this.presenter.didMount();
+    this.presenter.didMount(this.props.route.params?.confirmation);
   }
+
+  ShowMessage = (message: string) => {
+    this.setState({message: message});
+    console.warn(message);
+  };
 
   setCode = (code: string) => {
     this.setState({code: code});
@@ -58,14 +63,21 @@ export default class CodeView
           <CodeInput
             placeholder={strings.phoneAuthorization.codePlaceholder}
             value={this.state.code}
-            onChangeHandle={(value: string) => this.presenter.setCode(value)}
+            onChangeHandle={(value: string) =>
+              this.presenter.setCode(value, this.props.navigation)
+            }
             marginBottom={0}
             borderColor={this.state.borderColor}
           />
           <FilledButton
-            onPress={() => this.props.presenter.didPressSendAgainButton()}
+            onPress={() =>
+              this.props.presenter.didPressSendAgainButton(
+                this.props.route.params.phone,
+              )
+            }
             buttonText={strings.phoneAuthorization.sendCodeAgain}
             Style={styles.filledButton}
+            textColor={colors.Accent}
           />
         </View>
       </View>
