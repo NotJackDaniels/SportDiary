@@ -9,6 +9,7 @@ import {Input} from '../../components/Input';
 import {FilledButton} from '../../components/FilledButton';
 import {NavigatorParamList} from '../../resources/types';
 import {StackNavigationProp} from '@react-navigation/stack';
+import PhoneAuthorizationImg from '../../resources/images/gym.svg';
 
 interface Props {
   presenter: PhoneScreenPresenter;
@@ -42,6 +43,11 @@ export default class PhoneScreenView
     return (
       <View style={styles.container}>
         <View style={styles.content}>
+          <PhoneAuthorizationImg
+            width={144}
+            height={137}
+            style={styles.image}
+          />
           <Text style={[styles.Header]}>{strings.phoneAuthorization.logo}</Text>
           <Input
             placeholder={strings.phoneAuthorization.phonePlaceholder}
@@ -53,7 +59,12 @@ export default class PhoneScreenView
             keyboardType={'numeric'}
           />
           <FilledButton
-            onPress={() => this.presenter.didPressLoginButton()}
+            onPress={() =>
+              this.presenter.didPressLoginButton(
+                this.state.phone,
+                this.props.navigation,
+              )
+            }
             buttonText={strings.phoneAuthorization.login}
             Style={styles.filledButton}
           />
@@ -81,7 +92,9 @@ const styles = StyleSheet.create({
   },
   Header: {
     alignSelf: 'center',
-    marginBottom: 48,
+    marginBottom: 16,
+    fontWeight: '700',
+    fontSize: 24,
   },
   filledButton: {
     width: '100%',

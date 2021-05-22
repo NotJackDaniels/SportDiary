@@ -24,7 +24,7 @@ export default class SplashScreenView
 
   componentDidMount() {
     setTimeout(() => {
-      this.props.navigation.navigate('home');
+      this.props.navigation.navigate('login');
     }, 2000);
   }
   render() {
