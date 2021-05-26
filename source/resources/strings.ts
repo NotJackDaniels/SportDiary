@@ -39,6 +39,13 @@ const strings = {
         sendCodeAgain: 'СМС с кодом было отправлено на ваш номер',
         wrongCode: 'Неверный код подтверждения',
     },
+    calories: {
+        height: 'рост',
+        weight: 'вес',
+        age: 'возраст',
+        sex: 'пол',
+        calculate: 'расчитчать',
+    }
 }
 
 export default strings;
